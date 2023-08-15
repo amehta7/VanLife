@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 import useGetVanDetail from '../../hooks/useGetVanDetail'
 import Spinner from '../../components/Spinner'
@@ -19,6 +19,9 @@ function VanDetail() {
     <React.Fragment>
       {van ? (
         <div className='van-detail-container'>
+          <Link to='..' relative='path' className='back-button'>
+            &larr; <span>Back to all vans</span>
+          </Link>
           <div className='van-detail'>
             <img src={van.imageUrl} />
             <i className={`van-type ${van.type} selected`}>{van.type}</i>
