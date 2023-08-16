@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useLocation } from 'react-router-dom'
 
 import useGetVanDetail from '../../hooks/useGetVanDetail'
 import Spinner from '../../components/Spinner'
@@ -8,6 +8,9 @@ function VanDetail() {
   const [van, setVan] = useState(null)
 
   const { id } = useParams()
+  const location = useLocation()
+
+  console.log(location)
 
   useEffect(() => {
     fetch(`/api/vans/${id}`)
@@ -15,12 +18,17 @@ function VanDetail() {
       .then((data) => setVan(data.vans))
   }, [id])
 
+  const search = location.state?.search || ''
+  const tag = location.state?.type || 'all'
+
+  console.log(tag)
+
   return (
     <React.Fragment>
       {van ? (
         <div className='van-detail-container'>
-          <Link to='..' relative='path' className='back-button'>
-            &larr; <span>Back to all vans</span>
+          <Link to={`..${search}`} relative='path' className='back-button'>
+            &larr; <span>Back to {tag} vans</span>
           </Link>
           <div className='van-detail'>
             <img src={van.imageUrl} />

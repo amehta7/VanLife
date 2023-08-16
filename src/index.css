@@ -77,14 +77,12 @@ main {
 footer {
   background-color: #161616;
   color: #aaaaaa;
-
   height: 74px;
   display: flex;
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
   margin-top: auto;
-
   font-weight: 500;
 }
 
@@ -499,4 +497,15 @@ i[class*='van-type-'] {
   height: 100px;
   border-radius: 5px;
   width: 120px;
+}
+
+.not-found-container {
+  padding-inline: 26px;
+  align-items: center;
+}
+
+.not-found-container .link-button {
+  width: 100%;
+  background-color: #161616;
+  color: white;
 }

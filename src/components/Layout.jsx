@@ -5,15 +5,13 @@ import Footer from './Footer'
 
 const Layout = () => {
   return (
-    <React.Fragment>
-      <div className='site-wrapper'>
-        <Header />
-        <main>
-          <Outlet />
-        </main>
-      </div>
+    <div className='site-wrapper'>
+      <Header />
+      <main>
+        <Outlet />
+      </main>
       <Footer />
-    </React.Fragment>
+    </div>
   )
 }
 
