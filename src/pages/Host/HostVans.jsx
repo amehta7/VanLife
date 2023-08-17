@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import Spinner from '../../components/Spinner'
+import React from 'react'
+import { Link, useLoaderData } from 'react-router-dom'
+import { getHostVans } from '../../api'
+import { protectedRoute } from '../../utils'
+
+export const loader = async () => {
+  await protectedRoute()
+  return getHostVans()
+}
 
 const HostVans = () => {
-  const [vans, setVans] = useState([])
-
-  useEffect(() => {
-    fetch('/api/host/vans')
-      .then((res) => res.json())
-      .then((data) => setVans(data.vans))
-  }, [])
+  const vans = useLoaderData()
 
   const hostVansEls = vans.map((van) => (
     <Link to={`${van.id}`} key={van.id} className='host-van-link-wrapper'>
@@ -27,7 +27,11 @@ const HostVans = () => {
     <section>
       <h1 className='host-vans-title'>Your listed vans</h1>
       <div className='host-vans-list'>
-        {vans.length > 0 ? <section>{hostVansEls}</section> : <Spinner />}
+        {vans.length > 0 ? (
+          <section>{hostVansEls}</section>
+        ) : (
+          <h2>You don't host any van</h2>
+        )}
       </div>
     </section>
   )

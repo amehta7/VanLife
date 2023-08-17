@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link, useSearchParams, useLoaderData } from 'react-router-dom'
-import Spinner from '../../components/Spinner'
+
 import { getAllVans } from '../../api'
 
 export const loader = () => {

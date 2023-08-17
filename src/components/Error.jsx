@@ -8,9 +8,6 @@ const Error = () => {
   return (
     <React.Fragment>
       <h1>Error: {error.message}</h1>
-      <pre>
-        {error.status} - {error.statusText}
-      </pre>
     </React.Fragment>
   )
 }

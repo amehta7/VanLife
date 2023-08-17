@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { useParams, NavLink, Link, Outlet } from 'react-router-dom'
-import Spinner from '../../components/Spinner'
+import React from 'react'
+import { NavLink, Link, Outlet, useLoaderData } from 'react-router-dom'
+import { getHostVanById } from '../../api'
+import { protectedRoute } from '../../utils'
+
+export const loader = async ({ params }) => {
+  const { id } = params
+  await protectedRoute()
+  return getHostVanById(id)
+}
 
 const HostVanDetail = () => {
-  const [van, setVan] = useState(null)
-
-  const { id } = useParams()
-
-  useEffect(() => {
-    fetch(`/api/host/vans/${id}`)
-      .then((res) => res.json())
-      .then((data) => setVan(data.vans))
-  }, [id])
+  const van = useLoaderData()
 
   //console.log(van)
 
@@ -19,10 +18,6 @@ const HostVanDetail = () => {
     fontWeight: 'bold',
     textDecoration: 'underline',
     color: '#161616',
-  }
-
-  if (!van) {
-    return <Spinner />
   }
 
   return (
