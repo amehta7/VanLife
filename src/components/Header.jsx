@@ -1,9 +1,17 @@
 import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, useNavigate } from 'react-router-dom'
 import Logo from '../assets/images/logo.png'
 import LoginIcon from '../assets/images/4130647-200.png'
 
 const Header = () => {
+  const navigate = useNavigate()
+
+  const handleLogOut = () => {
+    localStorage.removeItem('loggedin')
+
+    navigate('/login')
+  }
+
   return (
     <header>
       <Link className='site-logo' to='/'>
@@ -31,6 +39,10 @@ const Header = () => {
         <Link to='login' className='login-link'>
           <img src={LoginIcon} alt='login_icon' className='login-icon' />
         </Link>
+
+        <button type='button' onClick={handleLogOut} className='logout-btn'>
+          LogOut
+        </button>
       </nav>
     </header>
   )

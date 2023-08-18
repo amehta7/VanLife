@@ -3,9 +3,9 @@ import { NavLink, Link, Outlet, useLoaderData } from 'react-router-dom'
 import { getHostVanById } from '../../api'
 import { protectedRoute } from '../../utils'
 
-export const loader = async ({ params }) => {
+export const loader = async ({ request, params }) => {
   const { id } = params
-  await protectedRoute()
+  await protectedRoute(request)
   return getHostVanById(id)
 }
 

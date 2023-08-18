@@ -76,3 +76,8 @@ export const loginUser = async (userCredential) => {
 
   return data
 }
+
+export const checkUser = () => {
+  let user = localStorage.getItem('loggedin')
+  return user
+}

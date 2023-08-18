@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { Link, useSearchParams, useLoaderData } from 'react-router-dom'
+import { Link, useSearchParams, useLoaderData, defer } from 'react-router-dom'
 
 import { getAllVans } from '../../api'
 
 export const loader = () => {
-  return getAllVans()
+  return defer({ vansData: getAllVans() })
 }
 
 function Vans() {

@@ -71,6 +71,15 @@ header .login-link {
   align-items: center;
 }
 
+.logout-btn {
+  border: none;
+  background-color: transparent;
+  color: #4d4d4d;
+  font-weight: bolder;
+  font-size: medium;
+  cursor: pointer;
+}
+
 nav {
   display: flex;
   justify-items: center;
@@ -537,6 +546,12 @@ i[class*='van-type-'] {
   margin-top: 22px;
   color: white;
   font-family: 'Inter', sans-serif;
+  cursor: pointer;
+}
+
+.login-form > button:disabled {
+  background-color: #aaaaaa;
+  cursor: not-allowed;
 }
 
 /*** SPINNER ***/

@@ -26,7 +26,10 @@ import HostVanPricing from './pages/Host/HostVanPricing'
 import HostVanPhotos from './pages/Host/HostVanPhotos'
 import NotFound from './pages/NotFound'
 import Error from './components/Error'
-import Login, { loader as loginLoader } from './pages/Login'
+import Login, {
+  loader as loginLoader,
+  action as loginAction,
+} from './pages/Login'
 import { protectedRoute } from './utils'
 
 const router = createBrowserRouter(
@@ -35,7 +38,12 @@ const router = createBrowserRouter(
       <Route path='*' element={<NotFound />} />
       <Route index element={<Home />} />
       <Route path='about' element={<About />} />
-      <Route path='login' element={<Login />} loader={loginLoader} />
+      <Route
+        path='login'
+        element={<Login />}
+        loader={loginLoader}
+        action={loginAction}
+      />
       <Route path='vans' element={<Vans />} loader={vansLoader} />
       <Route path='vans/:id' element={<VanDetail />} loader={vanDetailLoader} />
 
@@ -43,12 +51,12 @@ const router = createBrowserRouter(
         <Route
           index
           element={<Dashboard />}
-          loader={async () => await protectedRoute()}
+          loader={async ({ request }) => await protectedRoute(request)}
         />
         <Route
           path='income'
           element={<Income />}
-          loader={async () => await protectedRoute()}
+          loader={async ({ request }) => await protectedRoute(request)}
         />
         <Route path='vans' element={<HostVans />} loader={hostVansLoader} />
         <Route
@@ -59,23 +67,23 @@ const router = createBrowserRouter(
           <Route
             index
             element={<HostVanInfo />}
-            loader={async () => await protectedRoute()}
+            loader={async ({ request }) => await protectedRoute(request)}
           />
           <Route
             path='pricing'
             element={<HostVanPricing />}
-            loader={async () => await protectedRoute()}
+            loader={async ({ request }) => await protectedRoute(request)}
           />
           <Route
             path='photos'
             element={<HostVanPhotos />}
-            loader={async () => await protectedRoute()}
+            loader={async ({ request }) => await protectedRoute(request)}
           />
         </Route>
         <Route
           path='reviews'
           element={<Reviews />}
-          loader={async () => await protectedRoute()}
+          loader={async ({ request }) => await protectedRoute(request)}
         />
       </Route>
     </Route>

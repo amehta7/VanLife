@@ -3,8 +3,8 @@ import { Link, useLoaderData } from 'react-router-dom'
 import { getHostVans } from '../../api'
 import { protectedRoute } from '../../utils'
 
-export const loader = async () => {
-  await protectedRoute()
+export const loader = async ({ request }) => {
+  await protectedRoute(request)
   return getHostVans()
 }
 
