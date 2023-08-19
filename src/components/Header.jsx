@@ -36,13 +36,17 @@ const Header = () => {
         >
           Vans
         </NavLink>
-        <Link to='login' className='login-link'>
-          <img src={LoginIcon} alt='login_icon' className='login-icon' />
-        </Link>
+        {!localStorage.getItem('loggedin') && (
+          <Link to='login' className='login-link'>
+            <img src={LoginIcon} alt='login_icon' className='login-icon' />
+          </Link>
+        )}
 
-        <button type='button' onClick={handleLogOut} className='logout-btn'>
-          LogOut
-        </button>
+        {localStorage.getItem('loggedin') && (
+          <button type='button' onClick={handleLogOut} className='logout-btn'>
+            LogOut
+          </button>
+        )}
       </nav>
     </header>
   )
