@@ -1,12 +1,10 @@
 # VanLife - Travel Van Rental App
 
+- Live Site URL: [@Netlify](https://vanlifereactrouter.netlify.app)
+
 - Create a Travel Van Rental App with React + Vite
 - Styled & polished
 - Mock up API with Mirage.JS package
-
-### Links
-
-- Live Site URL: [@Netlify]()
 
 ### Built with
 
